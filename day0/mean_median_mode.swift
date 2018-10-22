@@ -4,7 +4,7 @@ import Foundation
 var n = Int(readLine()!)!
 
 // read array and map the elements to integer
-var arr = readLine()!.characters.split(" ").map{Int(String($0))!}
+var arr = readLine()!.split(separator: " ").map{Int(String($0))!}
 
 // number of elements
 //var n:Double = 10
@@ -19,14 +19,14 @@ func fixDouble(number: Double, dp: Int) -> Double {
     return round(number * mult)/mult
 }
 
-let dmean: Double = doubleArray.reduce(0, combine: +) / Double(n)
-print(fixDouble(dmean, dp: 1))
+let dmean: Double = doubleArray.reduce(0, +) / Double(n)
+print(fixDouble(number: dmean, dp: 1))
 
-let sorted = doubleArray.sort()
+let sorted = doubleArray.sorted()
 let med1 = Double(sorted[Int((n/2)-1)])
 let med2 = Double(sorted[Int(n/2)])
 let median = Double((med1 + med2) / 2.0)
-print(fixDouble(median, dp: 1))
+print(fixDouble(number: median, dp: 1))
 
 var doubleDict = [Double: Int]()
 for currentDouble in doubleArray {
@@ -37,7 +37,7 @@ for currentDouble in doubleArray {
         doubleDict[currentDouble] = 1
     }
 }
-var sortedDoubleItems = doubleDict.sort {
+var sortedDoubleItems = doubleDict.sorted {
     return $0.1 > $1.1 || ($0.1 == $1.1 && $0.0 < $1.0)
 }
 let mode = Int(sortedDoubleItems.first!.0)
