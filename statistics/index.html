@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Assistente de Análise Estatística</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .tip {
+            font-size: 0.85em;
+            color: #666;
+        }
+        .input-group {
+            max-width: 300px;
+        }
+        .callout {
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #eee;
+            border-left-width: 5px;
+            border-radius: 3px;
+        }
+        .callout-info {
+            border-left-color: #5bc0de;
+        }
+
+        .footer {
+    padding: 10px 0;
+    background-color: #f5f5f5; /* Example background color */
+    border-top: 1px solid #e7e7e7;
+    text-align: center;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding-bottom: 50px; /* Add padding to prevent content from hiding behind the footer */
+}
+
+/* Ensuring the footer is always at the bottom */
+.page-wrapper {
+    position: relative;
+    min-height: 100%;
+}
+
+/* Footer at the bottom */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+} 
+.bold {
+    font-weight: bolder;
+}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container text-center">
+        <br><hr>
+        </div>
+    </header>
+    <div class="container mt-5">
+        <h2 class="mb-4"><i class="fas fa-chart-line"></i> Assistente de Análise Estatística</h2>
+        <form id="formulario-analise">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-users"></i></span>
+                </div>
+                <input type="number" class="form-control" id="tamanhoAmostra" placeholder="Tamanho da Amostra" min="1" required>
+                <small class="form-text text-muted tip">Informe o número total de observações.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="numeroVariaveis">Número de Variáveis/Grupos:</label>
+                <select class="form-control" id="numeroVariaveis" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3 ou mais</option>
+                </select>
+                <small class="form-text text-muted tip">Escolha quantos grupos ou variáveis estão sendo analisados.</small>
+            </div>
+
+            <div id="tipoAmostraContainer" class="form-group d-none">
+                <label for="tipoAmostra">As amostras são:</label>
+                <select class="form-control" id="tipoAmostra" required>
+                    <option value="independentes">Independentes</option>
+                    <option value="pareadas">Pareadas</option>
+                </select>
+                <small class="form-text text-muted tip">Independentes para grupos distintos, pareadas para medidas repetidas no mesmo grupo.</small>
+            </div>
+
+            <div id="recomendacaoNormalidade" class="form-group d-none">
+                <label>Teste de Normalidade Recomendado: <span class="bold" id="testeNormalidadeSugerido"></span></label>
+                <select class="form-control" id="resultadoNormalidade">
+                    <option value="">Selecione o resultado do teste</option>
+                    <option value="sim">Normal</option>
+                    <option value="nao">Não Normal</option>
+                </select>
+            </div>
+
+            <button id="botaoRecomendar" type="button" class="btn btn-primary mt-3" onclick="recomendarTeste()"><i class="fas fa-search"></i> Recomendar Teste</button>
+        </form>
+
+        <div id="resultado" class="callout callout-info d-none"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="assistente.js"></script>   
+
+    <footer>
+        <div class="container text-center">
+            <hr>
+            <small>
+            <p>Doutoramento em Desenvolvimento de Jogos Digitais - IADE</p>
+            <p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://ezefranca.com/statistics">This work</a> by <span property="cc:attributionName">Ezequiel Santos</span> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
+        </small>
+        </div>
+    </footer>
+</body>
+</html>
+
