@@ -1,4 +1,4 @@
-# Ferramenta de Análise Estatística [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8054488.svg)](https://doi.org/10.5281/zenodo.8054488)
+# Ferramenta de Análise Estatística [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10360049.svg)](https://doi.org/10.5281/zenodo.10360049)
 
 
 Ferramenta interativa que facilita a análise estatística, permitindo aos usuários explorar e interpretar dados de maneira eficiente. Ideal para estudantes, educadores e profissionais que precisam realizar análises estatísticas.
